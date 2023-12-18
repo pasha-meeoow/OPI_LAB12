@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="morskoiboi.cpp" />
     <ClCompile Include="ИЗУМИТЕЛЬНЫЙ.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="morskoiboi.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
