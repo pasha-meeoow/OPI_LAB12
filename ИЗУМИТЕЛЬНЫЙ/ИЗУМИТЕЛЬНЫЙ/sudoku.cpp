@@ -1,73 +1,28 @@
 ﻿#include <iostream>
 #include <cstdlib>
 #include <cstring>
+#include"isSafe.h"
+#include"sudoku.h"
+#include"printBoard.h"
 using namespace std;
-
-const int N = 9;
-
-bool isSafe(int board[N][N], int row, int col, int num) 
-{
-	// проверка, есть ли число в строке
-	for (int i = 0; i < N; i++)
-		if (board[row][i] == num)
-			return false;
-
-	// проверка, есть ли число в колонке
-	for (int i = 0; i < N; i++)
-		if (board[i][col] == num)
-			return false;
-
-	// проверка, есть ли число в яйчейке 3 на 3
-	int boxRowStart = row - row % 3;
-	int boxColStart = col - col % 3;
-
-	for (int i = 0; i < 3; i++)
-		for (int j = 0; j < 3; j++)
-			if (board[i + boxRowStart][j + boxColStart] == num)
-				return false;
-
-	return true;
-}
-
-void printBoard(int grid[N][N]) 
-{
-	for (int row = 0; row < N; row++) 
-	{
-		for (int col = 0; col < N; col++) 
-		{
-			if (col == 3 || col == 6)
-				cout << " | ";
-			cout << grid[row][col] << " ";
-		}
-		if (row == 2 || row == 5) 
-		{
-			cout << endl;
-			for (int i = 0; i < N; i++)
-				cout << "---";
-		}
-		cout << endl;
-	}
-}
-
-
 bool solveSudoku(int board[N][N], int row, int col) 
 {
-	// конец игры если все яйчейки заполнены
+	//игра решена, если все пустые яйчейки заполнены
 	if (row == N - 1 && col == N)
 		return true;
 
-	// переход на следующий ряд, если в этой колонке нет пустых яйчеек
+	// переместитесь на след ряд если в этом нет пустых яйчеек
 	if (col == N) 
 	{
 		row++;
 		col = 0;
 	}
 
-	// пропуск ненулевых яйчеек
+	// пропустите уже полные яйчейки
 	if (board[row][col] != 0)
 		return solveSudoku(board, row, col + 1);
 
-	// если число в диапазоне от 1 до 9, его можно вписать в яйчейку
+	// заполните яйчейку числом от 1 до 9
 	for (int num = 1; num <= 9; num++) 
 	{
 		if (isSafe(board, row, col, num)) 
@@ -95,16 +50,17 @@ bool isSolvedCompletely(int grid[N][N])
 
 void playGame(int board[N][N]) 
 {
-	int ch;
+	setlocale(LC_ALL, "rus");
 	int row, col, num;
 	while (true) 
 	{
+		system("cls");
 		printBoard(board);
 		cout << endl << endl;
-		cout << "введите в качестве ряда -1, чтобы увидеть решенное судоку." << endl;
-		cout << "введите ряд: ";
+		cout << " введите -1 в качестве строки, чтобы увидеть решенное судоку" << endl;
+		cout << "введите строку: ";
 		cin >> row;
-		cout << "введите столбец: ";
+		cout << "введите колонку: ";
 		cin >> col;
 		cout << "введите число: ";
 		cin >> num;
@@ -123,13 +79,13 @@ void playGame(int board[N][N])
 		col--;
 		if (!isSafe(board, row, col, num)) 
 		{
-			cout << "некорректное действие, попробуйте еще раз." << endl;
+			cout << "некорректный выбор, попробуйте снова." << endl;
 			continue;
 		}
 		board[row][col] = num;
 	}
 
-	// проверка на правильное заполнение
+	// Check if the user has solved it correctly or not
 	bool solved = true;
 	for (int i = 0; i < N; i++) 
 	{
@@ -143,18 +99,21 @@ void playGame(int board[N][N])
 		}
 	}
 
-	if (solved) {
-		cout << "поздравляю, вы правильно решили." << endl;
+	if (solved) 
+	{
+		cout << "поздравляю, вы решили судоку." << endl;
 		printBoard(board);
 	}
-	else {
-		cout << "судоку решено неверно, попробуйте еще раз." << endl;
+	else 
+	{
+		cout << "попробуйте еще раз." << endl;
 	}
 
 }
 
-int main() 
+void sudokuGame() 
 {
+	setlocale(LC_ALL, "rus");
 	int board[N][N] = 
 	{
 		{3, 0, 6, 5, 0, 8, 4, 0, 0},
@@ -173,9 +132,9 @@ int main()
 		int choice;
 		cout << endl << endl;
 		cout << "\t\t1) решить судоку" << endl;
-		cout << "\t\t2) увидеть решенную игру" << endl;
+		cout << "\t\t2) увидеть решенное судоку" << endl;
 		cout << "\t\t3) выход" << endl;
-		cout << "\t\tвведите вариант: ";
+		cout << "\t\tвведите выбор: ";
 		cin >> choice;
 
 		switch (choice) 
@@ -196,7 +155,7 @@ int main()
 							cout << " | ";
 						cout << board[row][col] << " ";
 					}
-					if (row == 2 || row == 5)
+					if (row == 2 || row == 5) 
 					{
 						cout << endl;
 						for (int i = 0; i < N; i++)
@@ -208,14 +167,16 @@ int main()
 				cout << "удачи в следующий раз" << endl;
 			}
 			else
-				cout << "решение не найдено" << endl;
+				cout << "не найдено решение" << endl;
 			break;
 		case 3:
 			exit(0);
 		default:
 			cout << "некорректный выбор" << endl;
 		}
-		return 0;
+		
 	}
 
 }
+
+

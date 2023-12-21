@@ -940,7 +940,7 @@ void morskoiboi()
         }
         if (koroblyprotiv == 0) {
             system("cls");
-            cout << "Командир,мы выйиграли!!!!!!!!!!!";
+            cout << "Командир,мы выйиграли!!!!!!!!!!!\n";
             break;
         }
 

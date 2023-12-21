@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "morskoiboi.h"//модуль "морской бой"
 #include "guess_num.h"//модуль "угадай число"
+#include"sudoku.h"//модуль "судоку"
 #include <ctime>
 int main()
 {
@@ -18,7 +19,7 @@ int main()
 		case '1': {
 			system("cls");
 			cout << "Приятной игры";
-			Sleep(2000);
+			Sleep(1500);
 			system("cls");
 			morskoiboi();//морской бой
 			cout << "Желаете продолжить? Y/N\n";
@@ -28,7 +29,7 @@ int main()
 		case '2': {
 			system("cls");
 			cout << "Приятной игры";
-			Sleep(2000);
+			Sleep(1500);
 			system("cls");
 			Extreme();//угадай число
 			cout << "Желаете продолжить? Y/N\n";
@@ -38,9 +39,9 @@ int main()
 		case '3': {
 			system("cls");
 			cout << "Приятной игры";
-			Sleep(2000);
+			Sleep(1500);
 			system("cls");
-			//cудоку
+			sudokuGame();
 			cout << "Желаете продолжить? Y/N\n";
 			cin >> yn;
 			break;
@@ -48,7 +49,7 @@ int main()
 		case '4': {
 			system("cls");
 			cout << "Приятной игры";
-			Sleep(2000);
+			Sleep(1500);
 			system("cls");
 			//крестики нолики
 			cout << "Желаете продолжить? Y/N\n";
