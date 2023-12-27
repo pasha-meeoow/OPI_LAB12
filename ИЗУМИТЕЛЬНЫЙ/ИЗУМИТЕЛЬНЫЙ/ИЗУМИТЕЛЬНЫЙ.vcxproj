@@ -127,20 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="gameField.cpp" />
     <ClCompile Include="isSafe.cpp" />
+    <ClCompile Include="keyboardControls.cpp" />
     <ClCompile Include="morskoiboi.cpp" />
     <ClCompile Include="part_X.cpp" />
     <ClCompile Include="printBoard.cpp" />
     <ClCompile Include="sudoku.cpp" />
+    <ClCompile Include="TicTacToe.cpp" />
     <ClCompile Include="ИЗУМИТЕЛЬНЫЙ.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colors.h" />
+    <ClInclude Include="gameField.h" />
     <ClInclude Include="guess_num.h" />
     <ClInclude Include="isSafe.h" />
+    <ClInclude Include="keyboardControls.h" />
     <ClInclude Include="Macros.h" />
     <ClInclude Include="morskoiboi.h" />
     <ClInclude Include="printBoard.h" />
     <ClInclude Include="sudoku.h" />
+    <ClInclude Include="TicTacToe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

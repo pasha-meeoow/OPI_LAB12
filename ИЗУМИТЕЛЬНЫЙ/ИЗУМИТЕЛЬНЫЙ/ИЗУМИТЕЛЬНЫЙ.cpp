@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include "morskoiboi.h"//модуль "морской бой"
 #include "guess_num.h"//модуль "угадай число"
-#include"sudoku.h"//модуль "судоку"
+#include "sudoku.h" //модуль "судоку"
+#include "TicTacToe.h" //модуль "крестики-нолики"
 #include <ctime>
 int main()
 {
@@ -51,7 +52,7 @@ int main()
 			cout << "Приятной игры";
 			Sleep(1500);
 			system("cls");
-			//крестики нолики
+			tripleT();
 			cout << "Желаете продолжить? Y/N\n";
 			cin >> yn;
 			break;
