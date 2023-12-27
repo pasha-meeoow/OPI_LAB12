@@ -75,6 +75,21 @@ int main()
 			system("cls");
 			break;
 		}
+		else if(toupper(yn) != 'Y'){
+			while ((toupper(yn) != 'Y') && (toupper(yn) != 'N'))
+			{
+
+				system("cls");
+				cout << "Вы ввели некорректный символ\n";
+				cout << "Желаете продолжить? Y/N\n";
+				cin >> yn;
+			}
+		}
+		if (toupper(yn) == 'N')
+		{
+			system("cls");
+			break;
+		}
 		system("cls");
 	}
 	cout << "Спасибо за игру!\nДо новых встреч\n\n";
